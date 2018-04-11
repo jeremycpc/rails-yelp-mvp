@@ -1,0 +1,27 @@
+<div class="container">
+  <h1><%= @restaurant.name %></h1>
+  <h2><%= @restaurant.address %></h2>
+  <h3><%= @restaurant.category %></h3>
+  <%= link_to "Edit", edit_restaurant_path(@restaurant) %>
+  <br>
+  <%= link_to "Delete", restaurant_path(@restaurant), method: :delete, data: { confirm: "Are you sure?" }  %>
+
+
+  <h2>Reviews</h2>
+  <p>
+    <% @restaurant.reviews.each do |review|  %>
+      <br>
+      Review: <%= review.content  %>
+      <br>
+      Rating: <%= review.rating %> stars
+    <% end %>
+
+    <h2>Create a review</h2>
+    <br>
+    <%= render 'reviews/form', review: @review, restaurant: @restaurant %>
+
+  </p>
+
+</div>
+
+
